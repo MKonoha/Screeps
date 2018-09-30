@@ -1,3 +1,7 @@
+var memoryModule = require('module.memory');
+var harvesterJob = require('job.harvester');
+var upgraderJob = require('job.upgrader');
+
 var JobManager = {
     doJob(creep, job){
         if(!job.partsRequired.every(val => creep.body.includes(val))){
@@ -14,12 +18,31 @@ var JobManager = {
           }
     },
 
-    findNeededJobs(roomName){
-      const jobQueue = memoryModule.getJobQueue(roomName);
-      const creeps = Game.rooms[roomName].find(FIND_MY_CREEPS);
-      const creepJobs = this.getAllJobs(creeps);
+    findNeededJobs(roomName,creepList){
+      var sources = [];
+      for(const id in Memory.rooms[roomName].sources){
+        sources.push(Game.getObjectById(id));
+      }
 
-      var allJobs = jobQueue.concat(creepJobs);
+      const controller = Memory.rooms[roomName].controller;
+
+      const jobQueue = memoryModule.getJobQueue(roomName);
+      const allJobs = jobQueue.concat(creepList);
+
+      const harvesters = _.filter(allJobss, (job) => {
+        return job.type === "harvest";
+      });
+
+      const upgraders = _.filter(allJobss, (job) => {
+        return job.type === "upgrade";
+      });
+
+      if(harvesters.length === 0){
+        memoryModule.enqueueJob(roomName,harvesterJob.getJob(sources[0]));
+      }
+      if(upgraders.length === 0){
+        memoryModule.enqueueJob(roomName,upgraderJob.getJob(controller));
+      }  
     },
 
     getAllJobs(creepList){
