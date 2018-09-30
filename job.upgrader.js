@@ -1,4 +1,4 @@
-var jobModule = require('./job.js');
+var jobModule = require('job');
 
 var upgrader = {  
     action(creep, target){
