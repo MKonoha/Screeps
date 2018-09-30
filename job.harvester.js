@@ -1,18 +1,18 @@
-var modJob = require('./job.js');
+var modJob = require('job');
 
 var harvester = {  
-    harvestAction(creep, target){
+    action(creep, target){
         if(creep && target){
             creep.harvest(target);
             creep.say("⛏️");
         }
     },
 
-    getHarvestJob(source){
+    getJob(source){
         input = {
             target: source,
             partsRequired: [WORK,MOVE,CARRY],
-            action: harvestAction,
+            action: action,
             type: "harvest"
         };
         return modJob.createJob(input);

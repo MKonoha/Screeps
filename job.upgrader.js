@@ -1,14 +1,14 @@
 var jobModule = require('./job.js');
 
 var upgrader = {  
-    upgradeAction(creep, target){
+    action(creep, target){
         if(creep && target){
             creep.upgradeController(target);
             creep.say("🔨");
         }
     },
 
-    getUpgraderJob(controller){
+    getJob(controller){
         input = {
             target: controller,
             partsRequired: [WORK,MOVE,CARRY],
