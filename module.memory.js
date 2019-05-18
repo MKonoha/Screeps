@@ -12,8 +12,8 @@ var memoryHandler = {
     Memory.rooms[roomName] = {
       spawnQ: [],
       jobQ: [],
-      sources: getSourceIds(roomName),
-      controller: Game.rooms[roomName].conroller.id,
+      sources: this.getSourceIds(roomName),
+      controller: Game.rooms[roomName].controller.id,
       signMsg: "",
       initialized: false, //Set to true when init is run
     };

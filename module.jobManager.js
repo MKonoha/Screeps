@@ -29,11 +29,11 @@ var JobManager = {
       const jobQueue = memoryModule.getJobQueue(roomName);
       const allJobs = jobQueue.concat(creepList);
 
-      const harvesters = _.filter(allJobss, (job) => {
+      const harvesters = _.filter(allJobs, (job) => {
         return job.type === "harvest";
       });
 
-      const upgraders = _.filter(allJobss, (job) => {
+      const upgraders = _.filter(allJobs, (job) => {
         return job.type === "upgrade";
       });
 

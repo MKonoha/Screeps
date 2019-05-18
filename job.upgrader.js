@@ -9,10 +9,10 @@ var upgrader = {
     },
 
     getJob(controller){
-        input = {
+        const input = {
             target: controller,
             partsRequired: [WORK,MOVE,CARRY],
-            action: upgradeAction,
+            action: this.action,
             type: "upgrade",
             range: 3
         };

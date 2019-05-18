@@ -5,8 +5,8 @@ var modJob = {
         return {
             target: input.target ? input.target : undefined,
             partsRequired: input.partsRequired ? input.partsRequired : [],
-            endCondition: input.endConditon && typeof input.endCondition === "function" ? input.endCondition : defaultEndCondition,
-            action:  input.action && typeof input.acion === "function" ? input.action : defaultAction,
+            endCondition: input.endConditon && typeof input.endCondition === "function" ? input.endCondition : this.defaultEndCondition,
+            action:  input.action && typeof input.acion === "function" ? input.action : this.defaultAction,
             range: input.range ? input.range : 1,
             type: input.type ? input.type : "default"
         };

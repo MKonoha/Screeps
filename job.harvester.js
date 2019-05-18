@@ -9,10 +9,10 @@ var harvester = {
     },
 
     getJob(source){
-        input = {
+        const input = {
             target: source,
             partsRequired: [WORK,MOVE,CARRY],
-            action: action,
+            action: this.action,
             type: "harvest"
         };
         return modJob.createJob(input);

@@ -16,7 +16,7 @@ module.exports.loop = function () {
         const thisRoomCreeps = _.filter(allCreeps, (creep) => (creep.room.name === roomName));
         const currentSpawnQueue = memoryModule.getSpawnQueue(roomName);
 
-        jobManager.findNeededJobs(roomNameroomName,thisRoomCreeps);
+        jobManager.findNeededJobs(roomName,thisRoomCreeps);
 
         if(thisRoomCreeps.length + currentSpawnQueue.length < 5){
             spawnModule.enqueueGeneric(roomName);
